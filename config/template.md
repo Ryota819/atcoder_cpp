@@ -1,0 +1,1 @@
+/home/ryota819/.config/atcoder-cli-nodejs
