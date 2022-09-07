@@ -6,6 +6,10 @@ g++ main.cpp
 
 <!-- テストを実行する -->
 oj t -d ./tests/
+ctrl+shift+t
+
 
 <!-- 提出 -->
 acc submit main.cpp
+
+ctrl+shift+s
