@@ -13,3 +13,7 @@ ctrl+shift+t
 acc submit main.cpp
 
 ctrl+shift+s
+
+<!-- acl使う場合 -->
+#include <atcoder/all>
+using namespace atcoder;
