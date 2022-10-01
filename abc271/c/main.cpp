@@ -14,30 +14,36 @@ const ll LINF = 1e18;
 #define REPR(i, n) for (int i = n; i >= 0; i--)
 
 // 入力変数宣言
-int N, K;
-int A[100010], R[100010];
+int N;
 
-void solve() {
-  FOR(i, 1, N) {
-    if (i == 1)
-      R[i] = 1;
-    else
-      R[i] = R[i - 1];
-
-    while (R[i] < N && A[R[i] + 1] - A[i] <= K) {
-      R[i] += 1;
-    }
-  }
-  ll ans = 0;
-  FOR(i, 1, N) ans += R[i] - i;
-  cout << ans << endl;
-}
+void solve() {}
 
 int main() {
   // 入力
-  cin >> N >> K;
-  FOR(i, 1, N + 1) cin >> A[i];
+  vector<bool> a(300010, false);
+  cin >> N;
+  FOR(i, 1, N + 1) {
+    ll b;
+    cin >> b;
+    if (b > 300010) continue;
+    a[b] = true;
+  }
+  int read = 0, rest = N;
 
+  while (rest > 0) {
+    if (a[read + 1] == true) {
+      read++;
+      rest--;
+    } else {
+      if (rest >= 2) {
+        read++;
+        rest -= 2;
+      } else {
+        break;
+      }
+    }
+  }
+  cout << read << endl;
   solve();
   return 0;
 }

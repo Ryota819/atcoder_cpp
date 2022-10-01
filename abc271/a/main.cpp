@@ -2,7 +2,6 @@
 
 using namespace std;
 using ll = long long;
-using ld = long double;
 const int INF = 1e9;
 const ll LINF = 1e18;
 
@@ -18,23 +17,34 @@ const ll LINF = 1e18;
 int N;
 
 void solve() {
-  ld left = 0.0, right = 100.0;
+  unsigned char buf[1024] = "";
+  unsigned char* str_ptr = &buf[sizeof(buf) - 1];
 
-  int q = 100;
-  while (q--) {
-    ld mid = (left + right) / 2;
-    ld now = pow(mid, 3) + mid;
-    if (now >= N)
-      right = mid;
-    else
-      left = mid;
+  *--str_ptr = N % 16;
+  if (10 > *str_ptr) {
+    *str_ptr += 0x30;  // 0x30は0の文字コード
+  } else {
+    *str_ptr += (0x41 - 0x0A);  // 0x41はAの文字コード
   }
-  cout << right << endl;
+  N /= 16;
+
+  *--str_ptr = N % 16;
+  if (10 > *str_ptr) {
+    *str_ptr += 0x30;  // 0x30は0の文字コード
+  } else {
+    *str_ptr += (0x41 - 0x0A);  // 0x41はAの文字コード
+  }
+
+  cout << str_ptr << endl;
 }
 
 int main() {
   // 入力
   cin >> N;
+  if (N == 0) {
+    cout << "00" << endl;
+    return 0;
+  }
 
   solve();
   return 0;
